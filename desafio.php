@@ -84,7 +84,7 @@ $produtos= json_decode(file_get_contents($nomeArquivo), true);
 <body>
     <main class="container row">
          
-        <section class= col-6>   
+        <section class= "col-7">   
                 <h2 class="espaco">Todos os produtos</h2>
 
             <table class="table">
@@ -102,7 +102,7 @@ $produtos= json_decode(file_get_contents($nomeArquivo), true);
                     <tr>
                         <td><a href= "produto.php?idProduto=<?php echo $produto["idProduto"]; ?>"><?php echo $produto['nome'] ?></a></td>
                         <td><?php echo $produto['categoria'] ?></td>
-                        <td><?php echo $produto['preco'] ?></td>
+                        <td><?php echo 'R$'.$produto['preco'] ?></td>
                     </tr>
                <?php } ?>
                <?php } else { ?>
@@ -113,10 +113,10 @@ $produtos= json_decode(file_get_contents($nomeArquivo), true);
                 </table>
         </section>    
 
-        <div class= col-6>
+        <section class= "col-5">
             
             <div class="bgfundo col-12">
-                <form action="" method="post" enctype="multipart/form-data">
+                <form action="" method="post" enctype="multipart/form-data" class= "pr-4 pl-4">
 
             <div>
                 <h3 class= "espaco">Cadastrar de Produtos</h3>
@@ -141,7 +141,7 @@ $produtos= json_decode(file_get_contents($nomeArquivo), true);
 
         <div class="form-group">
             <label for="desProduto">Descrição</label>
-            <input type="text" class="form-control" name="descProduto" id= "descProduto" maxlength="100" required/>
+            <textarea class="form-control" name="descProduto" id= "descProduto" maxlength="100" rows= "2" required></textarea>
         </div>    
 
         <div class="form-group">
@@ -155,17 +155,18 @@ $produtos= json_decode(file_get_contents($nomeArquivo), true);
         </div>
 
         <div class="form-group">
-            <label for="imgProduto">Foto do Produto</label>
-            <input type="file" class="form-control" name="imgProduto" id="imgProduto" placeholder="Imagem do Produto" required/>
+            <label for="imgProduto">Foto do Produto</label><br>
+            <input type="file" name="imgProduto" id="imgProduto" required/>
         </div>
         
-
-        <button class="btn btn-success">Cadastrar Produto</button>
+        <div class= "text-right pb-5">
+            <button class="btn btn-primary">Cadastrar Produto</button>
+        </div>
             </form>
         </div>
         </div>
         
-        </div>
+        </section>
 
     </main>
 

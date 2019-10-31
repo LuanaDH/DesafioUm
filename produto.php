@@ -19,7 +19,7 @@ $produtos= json_decode(file_get_contents($nomeArquivo), true);
 <body>
     <section class= "container pg2">   
 
-    <a class="btnProduto btn" href="desafio.php" role="button">&#8656 Voltar para lista de produtos</a>
+    <a class="btnProduto btn" href="desafio.php" role="button">&#8592 Voltar para lista de produtos</a>
 
     <!--<div class="card mb-3" style="max-width: 540px;">-->
     <div class="row no-gutters">
@@ -29,26 +29,32 @@ $produtos= json_decode(file_get_contents($nomeArquivo), true);
           if($_GET["idProduto"] == $produto["idProduto"]){
             ?>
       <div class="col-5">
-      <img src="<?php echo $produto['imgProduto']; ?>" class="card-img" alt="...">
+      <img src="<?php echo $produto['imgProduto']; ?>" class="card-img ml-5" alt="..." height= "90%">
     </div>
 
     <div class="col-7">
       <div class="card-body todasInf">
           
-
         <h1 class="card-title"><?php echo $produto['nome']?></h1>
 
         <h6 class="card-title">Categoria</h6>
-        <p class="card-text"><?php echo $produto['categoria']?></p>
+          <p class="lead card-text"><strong><?php echo $produto['categoria']?></strong></p>
 
         <h6 class="card-title">Descrição</h6>
-        <p class="card-text"><?php echo $produto['descProduto']?></p>
+          <p class="lead card-text mb-5"><strong><?php echo $produto['descProduto']?></strong></p>
 
-        <h6 class="card-title">Quantidade</h6>
-        <p class="card-text"><?php echo $produto['quantidade']?></p>
+        <div class= "d-flex justify-content-between"> 
+          <div class= "pr-1">
+            <h6 class="card-title">Quantidade em estoque</h6>
+              <p class="lead card-text"><strong><?php echo $produto['quantidade']?></strong></p>
+        </div>  
 
-        <h6 class="card-title">Preço</h6>
-        <p class="card-text"><?php echo $produto['preco']?></p>
+          <div class= "pr-5 mr-5">
+            <h6 class="card-title">Preço</h6>
+              <p class="lead card-text"><strong><?php echo 'R$'.$produto['preco']?></strong></p>
+          </div>
+        </div>   
+        
       </div>
     </div>
 
