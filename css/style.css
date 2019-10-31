@@ -11,7 +11,20 @@ label{
 }
 
 .bgfundo{
-    background-color: rgb(238, 235, 235);
+    background-color: rgb(207, 204, 204);
 }
 
 /*pagina produto principal*/
+.btnProduto{
+    margin-bottom:10px;
+    margin-top: 50px;
+    border: 1px solid rgb(175, 172, 172);
+}
+
+.todasInf{
+    margin-left: 15px;
+}
+
+.pg2{
+    background-color: rgb(219, 217, 217);
+}

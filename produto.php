@@ -15,11 +15,11 @@ $produtos= json_decode(file_get_contents($nomeArquivo), true);
     <link href="css/style.css" rel="stylesheet"/>    
     <title>Produtos</title>
 </head>
-
+ 
 <body>
-    <section class= "container bg-light">   
+    <section class= "container pg2">   
 
-    <button class= "btn btn-light">Voltar para lista de produtos</button>
+    <a class="btnProduto btn" href="desafio.php" role="button">&#8656 Voltar para lista de produtos</a>
 
     <!--<div class="card mb-3" style="max-width: 540px;">-->
     <div class="row no-gutters">
@@ -33,7 +33,7 @@ $produtos= json_decode(file_get_contents($nomeArquivo), true);
     </div>
 
     <div class="col-7">
-      <div class="card-body">
+      <div class="card-body todasInf">
           
 
         <h1 class="card-title"><?php echo $produto['nome']?></h1>

@@ -31,7 +31,7 @@ function cadastrarProduto($nomeProduto, $categoriaProduto, $descProduto, $qtdePr
         $deuCerto= file_put_contents($nomeArquivo, $json);
         
         if($deuCerto){
-            return "Cadastro OK";
+            return "";
         } else {
             return "Não cadastrado";
         }
@@ -45,22 +45,24 @@ function cadastrarProduto($nomeProduto, $categoriaProduto, $descProduto, $qtdePr
         $deuCerto= file_put_contents($nomeArquivo, $json);
         
         if($deuCerto){
-            return "Cadastro OK";
+            return "";
         }else{
             return "Não cadastrado";
         }
     }
 };
 
-if($_POST){
-    $nomeImagem= $_FILES['imgProduto']['name'];
+    if($_POST){
+
+    /* $nomeImagem= $_FILES['imgProduto']['name'];*/
+    $extensao= pathinfo($_FILES['imgProduto']['name']); /*para caso as imagens tenham o mesmo nome, renomear e não sobreescrever */
+    $extensao= ".".$extensao['extension'];
+    $nomeImagem= time().uniqid().$extensao;
     $localTmp= $_FILES['imgProduto']['tmp_name'];
     $caminhoImagem= "img/".$nomeImagem;
-    
     $moveu= move_uploaded_file($localTmp, $caminhoImagem);
-    
-    echo cadastrarProduto($_POST["nomeProduto"], $_POST["categoriaProduto"], $_POST["descProduto"],$_POST["qtdeProduto"], $_POST["precoProduto"], $caminhoImagem);
-    
+   
+      echo cadastrarProduto($_POST["nomeProduto"], $_POST["categoriaProduto"], $_POST["descProduto"],$_POST["qtdeProduto"], $_POST["precoProduto"], $caminhoImagem);
 }
 
 $nomeArquivo = "produtos.json";
@@ -122,7 +124,7 @@ $produtos= json_decode(file_get_contents($nomeArquivo), true);
 
         <div class="form-group">
             <label for= "nomeProduto">Nome</label>
-            <input type="text" class="form-control" name="nomeProduto" id= "nomeProduto" required/>
+            <input type="text" class="form-control" name="nomeProduto" id= "nomeProduto" maxlength="50" required/>
         </div>
         
         <div class="form-group">
@@ -139,7 +141,7 @@ $produtos= json_decode(file_get_contents($nomeArquivo), true);
 
         <div class="form-group">
             <label for="desProduto">Descrição</label>
-            <input type="text" class="form-control" name="descProduto" id= "descProduto" required/>
+            <input type="text" class="form-control" name="descProduto" id= "descProduto" maxlength="100" required/>
         </div>    
 
         <div class="form-group">
